@@ -36,8 +36,6 @@ module.exports = {
              user: user,
              token: token
            };
-           console.log(user);
-           console.log(token);
            return res.status(200).send(json);
         } else {
           return res.status(401).send({ message: "No such email or wrong password." })
