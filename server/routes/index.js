@@ -1,5 +1,5 @@
 // Require your controllers here
-
+const UserController = require('../controllers/user');
 
 
 
@@ -12,4 +12,7 @@ module.exports = (app) => {
     next();
   });
   // Add your routes here
+  app.post('/users', UserController.create);
+  app.post('/login', UserController.login);
+
 };
