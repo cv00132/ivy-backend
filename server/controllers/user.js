@@ -42,5 +42,11 @@ module.exports = {
         }
       })
        .catch(error => res.status(400).send(error));
-   }
+   },
+
+   users (req, res) {
+    findAll({})
+     .then(comment => res.status(201).send(comment))
+     .catch(error => res.status(400).send(error));
+  }
 }
