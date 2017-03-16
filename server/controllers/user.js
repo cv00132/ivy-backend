@@ -19,8 +19,6 @@ module.exports = {
  },
 
   login (req, res) {
-    console.log('we\'re in login');
-    console.log(req.body.email);
     User.findOne({
       where: {
         email: req.body.email
@@ -32,6 +30,8 @@ module.exports = {
         }
 
         var input = bcrypt.hashSync(req.body.password, user.salt);
+        console.log(input);
+        console.log(user.password);
         if (input === user.password) {
           var token = jwt.encode({ id: user.id, name: user.username }, appSecrets.jwtSecret);
           var json = {
