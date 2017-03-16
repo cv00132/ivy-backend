@@ -7,7 +7,7 @@ module.exports = {
   // Add your routes here
   create (req, res) {
       let salt = bcrypt.genSaltSync(10);
-      let hashedPass = bcrypt.hashSync(req.body.password, salt)
+      let hashedPass = bcrypt.hashSync(req.body.password, salt);
       User.create({
           username: req.body.username,
           email: req.body.email,
@@ -19,6 +19,8 @@ module.exports = {
  },
 
   login (req, res) {
+    console.log('we\'re in login');
+    console.log(req.body.email);
     User.findOne({
       where: {
         email: req.body.email
