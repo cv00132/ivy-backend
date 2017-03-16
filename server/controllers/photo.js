@@ -4,18 +4,16 @@ module.exports = {
   // Add your routes here
   create (req, res) {
       Photo.create({
-          where: {
-              userId: req.params.userId
-          },
-          title: req.body.title,
-          photoUrl: req.body.photoUrl
+        userId: req.body.userId,
+        title: req.body.title,
+        photoUrl: req.body.photoUrl
      })
      .then(user => res.status(201).send(user))
      .catch(error => res.status(400).send(error));
- }
+ },
 
- list (req, res) {
-     Photo.findAll({
+  list (req, res) {
+      Photo.findAll({
         where: {
             userId: req.params.userId
         },
