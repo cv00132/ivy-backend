@@ -19,6 +19,6 @@ module.exports = (app) => {
 
 
   app.post('/photos/:id', PhotoController.create);
-  app.get('/photos/:id', PhotoController.list);
+  app.get('/photos', PhotoController.list);
 
 };

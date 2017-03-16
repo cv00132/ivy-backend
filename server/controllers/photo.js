@@ -14,10 +14,7 @@ module.exports = {
 
   list (req, res) {
       Photo.findAll({
-        where: {
-            userId: req.params.userId
-        },
-        order: [ 'createdAt', 'DESC' ]
+        order: [[ 'createdAt', 'DESC' ]]
      })
      .then(photo => res.status(201).send(photo))
      .catch(error => res.status(400).send(error))
