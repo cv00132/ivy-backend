@@ -30,14 +30,14 @@ module.exports = {
         }
 
         var input = bcrypt.hashSync(req.body.password, user.salt);
-        console.log(input);
-        console.log(user.password);
         if (input === user.password) {
           var token = jwt.encode({ id: user.id, name: user.username }, appSecrets.jwtSecret);
           var json = {
              username: username,
              token: token
            };
+           console.log(username);
+           console.log(token);
            return res.status(200).send(json);
         } else {
           return res.status(401).send({ message: "No such email or wrong password." })
