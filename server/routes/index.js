@@ -1,5 +1,6 @@
 // Require your controllers here
 const UserController = require('../controllers/user');
+const PhotoController = require('../controllers/photo');
 
 
 
@@ -15,5 +16,9 @@ module.exports = (app) => {
   app.post('/users', UserController.create);
   app.post('/login', UserController.login);
   app.get('/users', UserController.users);
+
+
+  app.post('/photos/:id', PhotoController.create);
+  app.get('/photos/:id', PhotoController.list);
 
 };
