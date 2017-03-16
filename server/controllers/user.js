@@ -33,10 +33,10 @@ module.exports = {
         if (input === user.password) {
           var token = jwt.encode({ id: user.id, name: user.username }, appSecrets.jwtSecret);
           var json = {
-             username: username,
+             user: user,
              token: token
            };
-           console.log(username);
+           console.log(user);
            console.log(token);
            return res.status(200).send(json);
         } else {
