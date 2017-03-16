@@ -45,7 +45,7 @@ module.exports = {
    },
 
    users (req, res) {
-    findAll({})
+    User.findAll({})
      .then(comment => res.status(201).send(comment))
      .catch(error => res.status(400).send(error));
   }
