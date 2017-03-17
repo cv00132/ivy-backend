@@ -23,5 +23,15 @@ module.exports = {
        })
        .then(photo => res.status(201).send(photo))
        .catch(error => res.status(400).send(error));
+  },
+
+  listOne (req, res) {
+       Photo.findOne({
+           where: {
+             id: req.params.photoId
+           }
+        })
+       .then(photo => res.status(201).send(photo))
+       .catch(error => res.status(400).send(error));
   }
 }
