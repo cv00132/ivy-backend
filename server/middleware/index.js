@@ -1,6 +1,6 @@
 const jwt = require("jwt-simple");
 const appSecrets = require("../config/secrets");
-const User = require("../models/user");
+const User = require("../models").User;
 
 module.exports = {
   authenticate (req, res, next) {
