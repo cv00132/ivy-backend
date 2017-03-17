@@ -1,5 +1,6 @@
 const Photo = require("../models").Photo;
 const User = require("../models").User;
+const Comments = require("../models").Comments;
 
 
 module.exports = {
@@ -31,5 +32,15 @@ module.exports = {
         })
        .then(photo => res.status(201).send(photo))
        .catch(error => res.status(400).send(error));
+  },
+
+  listComments (req, res) {
+      Photo.findById( req.params.id , {
+          include: {
+              model:Comments
+          }
+      })
+      .then(photo => res.status(201).send(photo))
+      .catch(error => res.status(400).send(error));
   }
 }
