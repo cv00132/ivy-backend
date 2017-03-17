@@ -1,4 +1,4 @@
-const Link = require("../models").Link;
+const Photo = require("../models").Photo;
 const User = require("../models").User;
 const Comments = require("../models").Comments;
 const jwt = require("jwt-simple");
@@ -10,7 +10,7 @@ module.exports = {
     var decoded = jwt.decode(token, appSecrets.jwtSecret);
     var user_id = decoded.id;
     Comments.create({
-      linkId: req.params.link_id,
+      linkId: req.params.linkId,
       userId: user_id,
       body: req.body.body
     })
@@ -21,8 +21,8 @@ module.exports = {
   list (req, res) {
     Comments.findAll({
       where: {
-        user_id: req.params.userId,
-        link_id: req.params.linkId
+        userId: req.params.userId,
+        linkId: req.params.linkId
       }
     })
       .then(comment => res.status(201).send(comment))

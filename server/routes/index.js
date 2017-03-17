@@ -7,7 +7,7 @@ const CommentsController = require('../controllers/comments');
 
 module.exports = (app) => {
 
-//Allows frontend to communicate to the backend
+//Allows frontend to communicate to the backend; CORS
   app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -19,10 +19,10 @@ module.exports = (app) => {
   app.get('/users', UserController.users);
 
 
-  app.post('/photos/:id', PhotoController.create);
+  app.post('/photos/:id', middleware.authenticate, PhotoController.create);
   app.get('/photos', PhotoController.list);
 
-  app.post('/comments', CommentsController.create);
+  app.post('/comments', middleware.authenticate, CommentsController.create);
   app.post('/comments', CommentsController.list);
 
 };
