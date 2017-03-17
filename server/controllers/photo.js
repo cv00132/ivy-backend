@@ -28,7 +28,7 @@ module.exports = {
   listOne (req, res) {
        Photo.findOne({
            where: {
-             id: req.params.photoId
+             id: req.params.id
            }
         })
        .then(photo => res.status(201).send(photo))
