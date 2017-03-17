@@ -7,7 +7,7 @@ module.exports = {
 
     Comments.create({
       photoId: req.params.id,
-      userId: user_id,
+      userId: req.user.id,
       text: req.body.text
     })
     .then(comment => res.status(201).send(comment))
