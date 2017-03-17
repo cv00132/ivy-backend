@@ -16,7 +16,7 @@ module.exports = {
     photoUrl: req.body.photoUrl,
     userId: user_id,
     })
-    .then(link => res.status(201).send(link))
+    .then(photo => res.status(201).send(photo))
     .catch(error => res.status(400).send(error));
  },
 
@@ -24,7 +24,7 @@ module.exports = {
        Photo.findAll({
            order: [ [ 'createdAt', 'DESC' ]]
        })
-       .then(contact => res.status(201).send(contact))
+       .then(photo => res.status(201).send(photo))
        .catch(error => res.status(400).send(error));
   }
 }
