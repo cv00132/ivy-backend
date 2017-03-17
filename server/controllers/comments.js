@@ -1,16 +1,12 @@
 const Photo = require("../models").Photo;
 const User = require("../models").User;
 const Comments = require("../models").Comments;
-const jwt = require("jwt-simple");
-const appSecrets = require("../config/secrets");
 
 module.exports = {
   create (req, res) {
-    var token = req.headers['access-token'];
-    var decoded = jwt.decode(token, appSecrets.jwtSecret);
-    var user_id = decoded.id;
+
     Comments.create({
-      linkId: req.params.linkId,
+      photoId: req.params.id,
       userId: user_id,
       text: req.body.text
     })
@@ -21,8 +17,7 @@ module.exports = {
   list (req, res) {
     Comments.findAll({
       where: {
-        userId: req.params.userId,
-        linkId: req.params.linkId
+        photoId: req.params.id
       }
     })
       .then(comment => res.status(201).send(comment))

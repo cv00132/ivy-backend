@@ -1,7 +1,5 @@
 const Photo = require("../models").Photo;
 const User = require("../models").User;
-const jwt = require("jwt-simple");
-const appSecrets = require("../config/secrets");
 
 
 module.exports = {

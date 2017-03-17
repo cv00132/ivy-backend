@@ -27,6 +27,6 @@ module.exports = (app) => {
   app.get('/photos/:id', PhotoController.listOne);
 
   app.post('/comments', middleware.authenticate, CommentsController.create);
-  app.post('/comments', CommentsController.list);
+  app.get('/comments/:id', CommentsController.list);
 
 };
