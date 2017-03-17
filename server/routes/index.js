@@ -1,3 +1,6 @@
+// Require any middleware here.
+const middleware = require("../middleware");
+
 // Require your controllers here
 const UserController = require('../controllers/user');
 const PhotoController = require('../controllers/photo');
