@@ -12,10 +12,14 @@ module.exports = {
      title: req.body.title,
      photoUrl: req.body.photoUrl,
      userId: req.user.id,
-     text: req.body.text
+     text: req.tags.text
     },
-     { include: [ Tags ]
+     { include: [{
+          model: Tags,
+          as: 'tags'
+     }]
     })
+    .then(console.log(Tags.text))
      .then(photo => res.status(201).send(photo))
      .catch(error => res.status(400).send(error));
   },
