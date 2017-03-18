@@ -64,7 +64,7 @@ module.exports = {
 
   likes (req, res) {
       Photo.update(
-          { Likes: req.body.Likes },
+          { likes: req.body.likes },
           { where: {
               id: req.params.id
           }}
