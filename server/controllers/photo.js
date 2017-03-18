@@ -12,7 +12,7 @@ module.exports = {
      title: req.body.title,
      photoUrl: req.body.photoUrl,
      userId: req.user.id,
-     tags: req.body.tags
+     text: req.body.tags
     },
      { include: [ Tags ]
     })
