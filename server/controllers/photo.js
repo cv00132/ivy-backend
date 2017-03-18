@@ -11,9 +11,9 @@ module.exports = {
     Photo.create({
      title: req.body.title,
      photoUrl: req.body.photoUrl,
-     userId: req.user.id,
+     userId: req.user.id
      //text: req.body.text
-    },
+    }
     //  { include: [{
     //       model: Tags,
     //       as: 'tags'
