@@ -34,6 +34,8 @@ module.exports = {
              id: req.params.id
            }
         })
+        .then(console.log("we're init"))
+        .then(console.log(req.params.id))
        .then(photo => res.status(201).send(photo))
        .catch(error => res.status(400).send(error));
   },
@@ -41,7 +43,7 @@ module.exports = {
   listComments (req, res) {
       Photo.findById( req.params.id , {
           include: {
-              model:Comments
+              model: Comments
           }
       })
       .then(photo => res.status(201).send(photo))
