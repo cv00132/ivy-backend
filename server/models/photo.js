@@ -7,7 +7,13 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Photo.hasMany(models.Comments, { foreignKey:'photoId' })
+        Photo.hasMany(models.Comments, { foreignKey:'photoId' });
+        // Photo.belongsToMany(models.Tags, {
+        //     through: {
+        //         models: 'PhotoTags',
+        //         foreignKey:'photoId'
+        //     }
+        // })
       }
     }
   });

@@ -5,6 +5,7 @@ const middleware = require("../middleware");
 const UserController = require('../controllers/user');
 const PhotoController = require('../controllers/photo');
 const CommentsController = require('../controllers/comments');
+const TagsController = require('../controllers/tags');
 
 
 
@@ -31,5 +32,7 @@ module.exports = (app) => {
   app.post('/comments/:photoId', middleware.authenticate, CommentsController.create);
   app.get('/comments/:photoId', CommentsController.listByPhoto);
 
-  app.get('/comments/photos/:photoId', PhotoController.listComments)
+  app.get('/comments/photos/:photoId', PhotoController.listComments);
+
+  app.post('/photos/:photoId/tags', TagsController.createTags);
 };
