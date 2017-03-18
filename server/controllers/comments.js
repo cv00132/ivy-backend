@@ -12,5 +12,15 @@ module.exports = {
     })
     .then(comment => res.status(201).send(comment))
     .catch(error => res.status(400).send(error));
+  },
+
+  listByPhoto (req, res) {
+    Comments.findAll({
+      where: {
+        photoId: req.params.id
+      }
+    })
+      .then(comment => res.status(201).send(comment))
+      .catch(error => res.status(400).send(error));
   }
 };
