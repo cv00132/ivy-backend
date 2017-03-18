@@ -72,7 +72,11 @@ module.exports = {
   },
 
   getLikes (req, res) {
-      Photo.findAll()
+      Photo.findAll({
+          where: {
+              fields: ['likes']
+          }
+      })
       .then(photo => res.status(201).send(photo))
       .catch(error => res.status(400).send(error));
   },
