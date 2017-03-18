@@ -63,12 +63,11 @@ module.exports = {
   },
 
   likes (req, res) {
-      Photo.update(
-          { likes: req.body.likes },
-          { where: {
-              id: req.params.id
-          }}
-       )
+      Photo.update(req.body, {
+          fields: ['likes']
+      },
+          where: { id: req.params.id }
+      })
       .then(photo => res.status(201).send(photo))
       .catch(error => res.status(400).send(error));
   },
