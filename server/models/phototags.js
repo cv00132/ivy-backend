@@ -6,7 +6,18 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        // PhotoTags.belongsToMany( models.Tags, {
+        //     through: {
+        //         model: 'PhotoTags',
+        //         foreignKey: 'tagId'
+        //     }
+        // });
+        // PhotoTags.belongsToMany( models.Photo, {
+        //     through: {
+        //         model: 'PhotoTags',
+        //         foreignKey: 'photoId'
+        //     }
+        // });
       }
     }
   });

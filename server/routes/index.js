@@ -31,6 +31,7 @@ module.exports = (app) => {
   app.get('/photos/:id', PhotoController.listOne);
   app.get('/comments/photos/:id', PhotoController.listComments);
   app.put('/likes/:id', PhotoController.likes);
+  app.get('/photos/likes', PhotoController.getLikes);
   app.get('/likes/:id', PhotoController.allLikes);
 
 

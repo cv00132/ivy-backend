@@ -56,18 +56,15 @@ module.exports = {
        .catch(error => res.status(400).send(error));
    },
 
-   listComments (req, res) {
-       User.findById( req.params.id , {
-          include: [{
-              model: Comments,
-              through: {
-                  attributes: ['userId']
-              }
-          }]
-       })
-       .then(user => res.status(201).send(user))
-       .catch(error => res.status(400).send(error));
-   },
+    listComments (req, res) {
+        User.findById( req.params.id , {
+           include: [{
+               model: Comments
+           }]
+        })
+        .then(user => res.status(201).send(user))
+        .catch(error => res.status(400).send(error));
+    },
 
    users (req, res) {
     User.findAll({})

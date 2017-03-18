@@ -7,15 +7,22 @@ module.exports = function(sequelize, DataTypes) {
     likes: DataTypes.INTEGER
   }, {
     classMethods: {
-      associate: function(models) {
-        Photo.belongsToMany(models.Tags, {
-            through: {
-                model: 'PhotoTags',
-                foreignKey: 'photoId'
-            }
-        });
-      }
-    }
+    //   associate: function(models) {
+    //     Photo.belongsTo(models.User);
+    //     Photo.Many(models.Comments, {
+    //         through: {
+    //             model: 'PhotoTags',
+    //             foreignKey: 'photoId'
+    //         }
+    //     });
+    //     Photo.belongsToMany(models.Tags, {
+    //         through: {
+    //             model: 'PhotoTags',
+    //             foreignKey: 'photoId'
+    //         }
+    //     });
+    //   }
+     }
   });
   return Photo;
 };

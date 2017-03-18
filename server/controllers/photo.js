@@ -71,6 +71,12 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
+  getLikes (req, res) {
+      Photo.findAll()
+      .then(photo => res.status(201).send(photo))
+      .catch(error => res.status(400).send(error));
+  },
+
   allLikes (req, res) {
        Photo.findById( req.params.id )
        .then(photo => res.status(201).send(photo))
