@@ -20,6 +20,7 @@ module.exports = (app) => {
   app.post('/users', UserController.create);
   app.post('/login', UserController.login);
   app.get('/users', UserController.users);
+  app.get('/users/:id/photos', UserController.listPhotos);
 
 
   app.post('/photos', middleware.authenticate, PhotoController.create);
@@ -29,5 +30,5 @@ module.exports = (app) => {
   app.post('/comments/:id', middleware.authenticate, CommentsController.create);
   app.get('/comments/:id', CommentsController.list);
 
-  app.get('/comments/photo/:id', PhotoController.listComments)
+  app.get('/comments/photos/:id', PhotoController.listComments)
 };

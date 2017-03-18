@@ -1,4 +1,6 @@
 const User = require("../models").User;
+const Photo = require("../models").Photo;
+const Comments = require("../models").Comments;
 const bcrypt = require('bcryptjs');
 const jwt = require('jwt-simple');
 const appSecrets = require("../config/secrets");
@@ -44,9 +46,19 @@ module.exports = {
        .catch(error => res.status(400).send(error));
    },
 
+   listPhotos (req, res) {
+       User.findById( req.params.id , {
+           include: {
+               model: Photo, Comments
+           }
+       })
+       .then(user => res.status(201).send(user))
+       .catch(error => res.status(400).send(error));
+   },
+
    users (req, res) {
     User.findAll({})
      .then(user => res.status(201).send(user))
      .catch(error => res.status(400).send(error));
-  }
+ }
 }
