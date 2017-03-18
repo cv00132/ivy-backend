@@ -48,5 +48,15 @@ module.exports = {
       })
       .then(photo => res.status(201).send(photo))
       .catch(error => res.status(400).send(error));
+  },
+
+  listTags (req, res) {
+      Photo.findById( req.params.id , {
+          include: {
+              model: Tags
+          }
+      })
+      .then(photo => res.status(201).send(photo))
+      .catch(error => res.status(400).send(error));
   }
 }
