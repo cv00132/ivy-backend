@@ -58,9 +58,12 @@ module.exports = {
 
    listComments (req, res) {
        User.findById( req.params.id , {
-           include: [{
-               model: Comments
-           }]
+          include: [{
+              model: Comments,
+              through: {
+                  attributes: ['userId']
+              }
+          }]
        })
        .then(user => res.status(201).send(user))
        .catch(error => res.status(400).send(error));
