@@ -1,6 +1,7 @@
 const Photo = require("../models").Photo;
 const User = require("../models").User;
 const Comments = require("../models").Comments;
+const Tags = require("../models").Tags;
 
 
 module.exports = {
@@ -8,13 +9,16 @@ module.exports = {
   create (req, res) {
 
     Photo.create({
-    title: req.body.title,
-    photoUrl: req.body.photoUrl,
-    userId: req.user.id
+     title: req.body.title,
+     photoUrl: req.body.photoUrl,
+     userId: req.user.id,
+     tags: req.body.tags
+    },
+     { include: [ Tags ]
     })
-    .then(photo => res.status(201).send(photo))
-    .catch(error => res.status(400).send(error));
- },
+     .then(photo => res.status(201).send(photo))
+     .catch(error => res.status(400).send(error));
+  },
 
   list (req, res) {
        Photo.findAll({

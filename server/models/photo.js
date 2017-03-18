@@ -13,22 +13,6 @@ module.exports = function(sequelize, DataTypes) {
                 foreignKey: 'photoId'
             }
         });
-    //     Photo.hasMany(models.Comments, { foreignKey:'photoId' });
-    //     Photo.belongsToMany('Tag', {
-    //         through: {
-    //             model: 'PhotoTag',
-    //             unique: false,
-    //             scope: { taggable: 'photo'}
-    //     },
-    //     foreignKey: 'taggable_id',
-    //     constraints: false
-    // });
-        // Photo.belongsToMany(models.Tags, {
-        //     through: {
-        //         models: 'PhotoTags',
-        //         foreignKey:'photoId'
-        //     }
-        // })
       }
     }
   });
