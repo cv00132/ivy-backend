@@ -34,5 +34,5 @@ module.exports = (app) => {
 
   app.get('/comments/photos/:photoId', PhotoController.listComments);
 
-  //app.post('/photos/:photoId/tags', TagsController.createTags);
+  app.post('/photos/:photoId/tags', TagsController.createTags);
 };

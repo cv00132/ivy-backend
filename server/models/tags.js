@@ -5,7 +5,12 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        //Tags.belongsToMany( models.Photo, { through: { models: 'Phototags' }, foreignKey: 'tagId' })
+        Tags.belongsToMany( models.Photo, {
+            through: {
+                model: 'PhotoTags',
+                foreignKey: 'tagId'
+            }
+        })
       }
     }
   });
