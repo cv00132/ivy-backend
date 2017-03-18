@@ -48,8 +48,18 @@ module.exports = {
 
    listPhotos (req, res) {
        User.findById( req.params.id , {
+          include: [{
+              model: Photo
+          }]
+       })
+       .then(user => res.status(201).send(user))
+       .catch(error => res.status(400).send(error));
+   },
+
+   listComments (req, res) {
+       User.findById( req.params.id , {
            include: {
-               model: Photo, Comments
+               model: Comments
            }
        })
        .then(user => res.status(201).send(user))

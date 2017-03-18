@@ -9,7 +9,8 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-          User.hasMany(models.Photo, { foreignKey:'userId' })
+          User.hasMany(models.Photo, { foreignKey:'userId' });
+          User.hasMany(models.Comments, { foreignKey:'userId'});
           }
       }
   });
