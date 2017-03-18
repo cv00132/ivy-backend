@@ -38,8 +38,6 @@ module.exports = {
              id: req.params.id
            }
         })
-        .then(console.log("we're init"))
-        .then(console.log(req.params.id))
        .then(photo => res.status(201).send(photo))
        .catch(error => res.status(400).send(error));
   },
@@ -62,5 +60,22 @@ module.exports = {
       })
       .then(photo => res.status(201).send(photo))
       .catch(error => res.status(400).send(error));
+  },
+
+  likes (req, res) {
+      Photo.update(
+          { Likes: req.body.Likes },
+          { where: {
+              id: req.params.id
+          }}
+       )
+      .then(photo => res.status(201).send(photo))
+      .catch(error => res.status(400).send(error));
+  },
+
+  allLikes (req, res) {
+       Photo.findById( req.params.id )
+       .then(photo => res.status(201).send(photo))
+       .catch(error => res.status(400).send(error));
   }
 }
