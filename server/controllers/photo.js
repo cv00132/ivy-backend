@@ -73,9 +73,9 @@ module.exports = {
 
   getLikes (req, res) {
       Photo.findAll({
-        //   where: {
-        //       id: req.params.id
-        //   }
+          where: {
+              attributes: ['likes']
+          }
       })
       .then(photo => res.status(201).send(photo))
       .catch(error => res.status(400).send(error));
