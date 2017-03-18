@@ -12,6 +12,14 @@ module.exports = {
        })
        .then(tag => res.status(201).send(tag))
        .catch(error => res.status(400).send(error));
-    }
+   },
+
+   listAll (req, res) {
+        Tags.findAll({
+            order: [ [ 'createdAt', 'DESC' ]]
+        })
+        .then(tag => res.status(201).send(tag))
+        .catch(error => res.status(400).send(error));
+   }
 
 }
