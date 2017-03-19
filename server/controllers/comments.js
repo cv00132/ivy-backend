@@ -27,7 +27,7 @@ module.exports = {
   linkUser (req, res) {
     Comments.findAll({
       where: {
-        UserId: req.params.id
+        userId: req.params.id
       }
     })
       .then(username => res.status(201).send(username))

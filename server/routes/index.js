@@ -33,7 +33,6 @@ module.exports = (app) => {
   app.get('/photos/likes/all', PhotoController.allLikes);
   app.get('/likes/:id', PhotoController.getLikes);
 
-
   app.post('/comments/:id', middleware.authenticate, CommentsController.create);
   app.get('/comments/:id', CommentsController.listByPhoto);
   app.get('/comments/by/:id', CommentsController.linkUser)
