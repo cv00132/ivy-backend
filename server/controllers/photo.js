@@ -10,7 +10,7 @@ module.exports = {
       Photo.create({
           title: req.body.title,
           photoUrl: req.body.photoUrl,
-          userId: User.id
+          userId: req.user.id
       })
      .then(photo => res.status(201).send(photo))
      .catch(error => res.status(400).send(error));
