@@ -3,7 +3,7 @@ const User = require("../models").User;
 const Comments = require("../models").Comments;
 
 module.exports = {
-  create (req, res) {
+  createComments (req, res) {
 
     Comments.create({
       photoId: req.params.id,
@@ -14,7 +14,7 @@ module.exports = {
     .catch(error => res.status(400).send(error));
   },
 
-  listByPhoto (req, res) {
+  listCommentsByPhoto (req, res) {
     Comments.findAll({
       where: {
         photoId: req.params.id
@@ -24,7 +24,7 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
-  linkUser (req, res) {
+  linkUserToComments (req, res) {
     Comments.findAll({
       where: {
         userId: req.params.id

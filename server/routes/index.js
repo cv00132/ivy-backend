@@ -6,6 +6,7 @@ const UserController = require('../controllers/user');
 const PhotoController = require('../controllers/photo');
 const CommentsController = require('../controllers/comments');
 const TagsController = require('../controllers/tags');
+const PhotoTagsController = require('../controllers/phototags');
 
 
 
@@ -19,25 +20,28 @@ module.exports = (app) => {
     next();
   });
   // Add your routes here
-  app.post('/users', UserController.create);
+  app.post('/users', UserController.createUser);
   app.post('/login', UserController.login);
-  app.get('/users', UserController.users);
-  app.get('/users/:id/photos', UserController.listPhotos);
-  app.get('/users/:id/comments', UserController.listComments);
+  app.get('/users', UserController.getUsers);
+  app.get('/users/:id/photos', UserController.listUserPhotos);
+  app.get('/users/:id/comments', UserController.listUserComments);
   app.get('/users/name/:id', UserController.getUsername);
 
 
-  app.post('/photos', middleware.authenticate, PhotoController.create);
-  app.get('/photos', PhotoController.list);
-  app.get('/photos/:id', PhotoController.listOne);
-  app.put('/likes/:id', PhotoController.likes);
-  app.get('/photos/likes/all', PhotoController.allLikes);
-  app.get('/likes/:id', PhotoController.getLikes);
+  app.post('/photos', PhotoController.uploadPhoto);
+  app.get('/photos', PhotoController.listPhotos);
+  app.get('/photos/:id', PhotoController.listOnePhoto);
+  app.put('/likes/:id', PhotoController.likesPhoto);
+  app.get('/photos/likes/all', PhotoController.allPhotoLikes);
+  app.get('/likes/:id', PhotoController.getPhotoLikes);
 
-  app.post('/comments/:id', middleware.authenticate, CommentsController.create);
-  app.get('/comments/:id', CommentsController.listByPhoto);
-  app.get('/comments/by/:id', CommentsController.linkUser)
+  app.post('/comments/:id', middleware.authenticate, CommentsController.createComments);
+  app.get('/comments/:id', CommentsController.listCommentsByPhoto);
+  app.get('/comments/by/:id', CommentsController.linkUserToComments)
 
-  app.get('/photos/:id/tags', TagsController.list);
-  app.get('/tags/photos', TagsController.listAll);
+  app.post('/tags', TagsController.createTag)
+  app.get('/photos/:id/tags', TagsController.listTags);
+  app.get('/tags/photos', TagsController.listAllTags);
+
+  app.post('/phototags', PhotoTagsController.createPhotoTag);
 };

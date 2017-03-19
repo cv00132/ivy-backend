@@ -6,18 +6,18 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // PhotoTags.belongsToMany( models.Tags, {
-        //     through: {
-        //         model: 'PhotoTags',
-        //         foreignKey: 'tagId'
-        //     }
-        // });
-        // PhotoTags.belongsToMany( models.Photo, {
-        //     through: {
-        //         model: 'PhotoTags',
-        //         foreignKey: 'photoId'
-        //     }
-        // });
+        PhotoTags.belongsTo( models.Tags, {
+            through: {
+                model: 'PhotoTags',
+                foreignKey: 'tagId'
+            }
+        });
+        PhotoTags.belongsTo( models.Photo, {
+            through: {
+                model: 'PhotoTags',
+                foreignKey: 'photoId'
+            }
+        });
       }
     }
   });

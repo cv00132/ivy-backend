@@ -6,25 +6,25 @@ const Tags = require("../models").Tags;
 
 module.exports = {
   // Add your routes here
-  create (req, res) {
+  uploadPhoto (req, res) {
 
     Photo.create({
      title: req.body.title,
      photoUrl: req.body.photoUrl,
-     userId: req.user.id
-     //text: req.body.text
-    }
-    //  { include: [{
-    //       model: Tags,
-    //       as: 'tags'
-    //  }]
-    )
+     userId: req.body.id,
+     text: req.body.text
+ },
+     { include: [{
+          model: Tags,
+          as: 'tags'
+     }]
+ })
     .then(console.log(Tags.text))
      .then(photo => res.status(201).send(photo))
      .catch(error => res.status(400).send(error));
   },
 
-  list (req, res) {
+  listPhotos (req, res) {
        Photo.findAll({
            order: [ [ 'createdAt', 'DESC' ]]
        })
@@ -32,7 +32,7 @@ module.exports = {
        .catch(error => res.status(400).send(error));
   },
 
-  listOne (req, res) {
+  listOnePhoto (req, res) {
        Photo.findOne({
            where: {
              id: req.params.id
@@ -42,17 +42,21 @@ module.exports = {
        .catch(error => res.status(400).send(error));
   },
 
-  listTags (req, res) {
-      Photo.findById( req.params.id , {
-          include: {
-              model: Tags
-          }
+  listTagsOnPhoto (req, res) {
+      Photo.findAll({
+          include: [ {
+              model: PhotoTags,
+              include: [ {
+                  model: Tags,
+                  where: { text: req.body.text }
+              }]
+          }]
       })
       .then(photo => res.status(201).send(photo))
       .catch(error => res.status(400).send(error));
   },
 
-  likes (req, res) {
+  likesPhoto (req, res) {
       Photo.update(req.body, {
           fields: ['likes'],
           where: { id: req.params.id }
@@ -61,13 +65,13 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
-  allLikes (req, res) {
+  allPhotoLikes (req, res) {
       Photo.findAll({})
       .then(photo => res.status(201).send(photo))
       .catch(error => res.status(400).send(error));
   },
 
-  getLikes (req, res) {
+  getPhotoLikes (req, res) {
        Photo.findById( req.params.id )
        .then(photo => res.status(201).send(photo))
        .catch(error => res.status(400).send(error));

@@ -6,37 +6,40 @@ const PhotoTags = require("../models").PhotoTags;
 module.exports = {
 //Add your routes here
 
-    createTag (req, res) {
+    createPhotoTag (req, res) {
 
-    Tags.create({ text: req.body.text })
-        .then(Tags.findOrCreate({
-                where: {
-                    text: Tags.text
-                }
-            })
+    PhotoTags.create({
+        photoId: req.body.photoId,
+        tagId: req.body.tagId
+    })
+    .then(function() {
+        PhotoTags.findOrCreate({
+            where: {
+                photoId: req.body.photoId
+            }})
             .spread(function(tags, created) {
                 tags.get({
                     plain: true
                 })
             })
-        )
-        .then(created => res.status(201).send(created))
+        })
+        .then(phototag => res.status(201).send(phototag))
         .catch(error => res.status(400).send(error));
     },
 
-    listTags (req, res) {
-        Tags.findById(req.params.id, {
+    listPhotoTags (req, res) {
+        PhotoTags.findById(req.params.id, {
             text: req.body.text,
        })
-       .then(tag => res.status(201).send(tag))
+       .then(phototag => res.status(201).send(phototag))
        .catch(error => res.status(400).send(error));
    },
 
-   listAllTags (req, res) {
-        Tags.findAll({
+   listAllPhotoTags (req, res) {
+        PhotoTags.findAll({
             order: [ [ 'createdAt', 'DESC' ]]
         })
-        .then(tag => res.status(201).send(tag))
+        .then(phototag => res.status(201).send(phototag))
         .catch(error => res.status(400).send(error));
    }
 

@@ -7,7 +7,7 @@ const appSecrets = require("../config/secrets");
 
 module.exports = {
   // Add your routes here
-  create (req, res) {
+  createUser (req, res) {
       let salt = bcrypt.genSaltSync(10);
       let hashedPass = bcrypt.hashSync(req.body.password, salt);
       User.create({
@@ -58,7 +58,7 @@ module.exports = {
      .catch(error => res.status(400).send(error));
  },
 
-   listPhotos (req, res) {
+   listUserPhotos (req, res) {
        User.findById( req.params.id , {
           include: [{
               model: Photo
@@ -68,7 +68,7 @@ module.exports = {
        .catch(error => res.status(400).send(error));
    },
 
-    listComments (req, res) {
+    listUserComments (req, res) {
         User.findById( req.params.id , {
            include: [{
                model: Comments
@@ -78,7 +78,7 @@ module.exports = {
         .catch(error => res.status(400).send(error));
     },
 
-   users (req, res) {
+   getUsers (req, res) {
     User.findAll({})
      .then(user => res.status(201).send(user))
      .catch(error => res.status(400).send(error));
