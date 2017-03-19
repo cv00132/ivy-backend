@@ -4,21 +4,16 @@ module.exports = function(sequelize, DataTypes) {
     text: DataTypes.STRING
   }, {
     classMethods: {
-      associate: function(models) {
-        // Tags.belongsToMany( models.Photo, {
-        //     through: {
-        //         model: 'PhotoTags',
-        //         foreignKey: 'photoId'
-        //     }
-        // });
-        // Tags.belongsToMany( models.Photo, {
-        //     through: {
-        //         model: 'PhotoTags',
-        //         foreignKey: 'tagId'
-        //     }
-        // });
-      }
-    }
+    //   associate: function(models) {
+    //     Tags.belongsToMany( models.Photo, {
+    //         through: {
+    //             model: 'PhotoTags',
+    //             foreignKey: 'photoId'
+    //         }
+    //     });
+    //     }
+    //   }
+     }
   });
   return Tags;
 };

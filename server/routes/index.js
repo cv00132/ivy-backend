@@ -24,6 +24,7 @@ module.exports = (app) => {
   app.get('/users', UserController.users);
   app.get('/users/:id/photos', UserController.listPhotos);
   app.get('/users/:id/comments', UserController.listComments);
+  app.get('/users', UserController.getUsername);
 
 
   app.post('/photos', middleware.authenticate, PhotoController.create);

@@ -46,6 +46,14 @@ module.exports = {
        .catch(error => res.status(400).send(error));
    },
 
+   getUsername (req, res) {
+    User.findById( req.params.id, {
+        attributes: [ 'username' ]
+    })
+     .then(user => res.status(201).send(user))
+     .catch(error => res.status(400).send(error));
+ },
+
    listPhotos (req, res) {
        User.findById( req.params.id , {
           include: [{
