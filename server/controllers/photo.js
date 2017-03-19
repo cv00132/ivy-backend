@@ -7,13 +7,11 @@ const Tags = require("../models").Tags;
 module.exports = {
   // Add your routes here
   uploadPhoto (req, res) {
-
-    Photo.create({
-     title: req.body.title,
-     photoUrl: req.body.photoUrl,
-     userId: req.user.id,
- })
-    .then(console.log(Tags.text))
+      Photo.create({
+          title: req.body.title,
+          photoUrl: req.body.photoUrl,
+          userId: User.id
+      })
      .then(photo => res.status(201).send(photo))
      .catch(error => res.status(400).send(error));
   },
