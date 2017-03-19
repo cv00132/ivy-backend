@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
        associate: function(models) {
-         Photo.belongsTo(models.User);
+         Photo.belongsTo(models.User, { foreignKey:'userId' });
     //     Photo.hasMany(models.Comments, {
     //         through: {
     //             foreignKey: 'photoId'
