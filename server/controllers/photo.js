@@ -11,7 +11,7 @@ module.exports = {
     Photo.create({
      title: req.body.title,
      photoUrl: req.body.photoUrl,
-     userId: req.body.id,
+     userId: req.user.id,
  })
     .then(console.log(Tags.text))
      .then(photo => res.status(201).send(photo))
