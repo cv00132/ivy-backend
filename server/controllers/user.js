@@ -48,7 +48,11 @@ module.exports = {
 
    getUsername (req, res) {
     User.findById( req.params.id, {
-        attributes: [ 'username' ]
+        attributes: [ 'username' ],
+        include: [{
+            model: Comments,
+            attributes: ['text']
+        }]
     })
      .then(user => res.status(201).send(user))
      .catch(error => res.status(400).send(error));
