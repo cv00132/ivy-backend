@@ -40,7 +40,7 @@ module.exports = (app) => {
   app.get('/comments/by/:id', CommentsController.linkUserToComments)
 
   app.post('/tags', TagsController.createTag)
-  app.get('/photos/:id/tags', TagsController.listTags);
+  app.get('/single/:id/tags', TagsController.listTags);
   app.get('/tags/photos', TagsController.listAllTags);
 
   app.post('/phototags', PhotoTagsController.createPhotoTag);
