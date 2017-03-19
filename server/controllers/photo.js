@@ -12,12 +12,6 @@ module.exports = {
      title: req.body.title,
      photoUrl: req.body.photoUrl,
      userId: req.body.id,
-     text: req.body.text
- },
-     { include: [{
-          model: Tags,
-          as: 'tags'
-     }]
  })
     .then(console.log(Tags.text))
      .then(photo => res.status(201).send(photo))
