@@ -51,7 +51,7 @@ module.exports = {
         attributes: [ 'username' ],
         include: [{
             model: Comments,
-            attributes: ['text']
+            attributes: ['photoId','text']
         }]
     })
      .then(user => res.status(201).send(user))
