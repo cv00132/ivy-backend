@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
         // Tags.belongsToMany( models.Photo, {
         //     through: {
         //         model: 'PhotoTags',
-        //         foreignKey: 'tagId'
+        //         foreignKey: 'photoId'
         //     }
         // });
         // Tags.belongsToMany( models.Photo, {

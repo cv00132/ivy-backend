@@ -42,16 +42,6 @@ module.exports = {
        .catch(error => res.status(400).send(error));
   },
 
-  listComments (req, res) {
-      Photo.findById( req.params.id , {
-          include: {
-              model: Comments
-          }
-      })
-      .then(photo => res.status(201).send(photo))
-      .catch(error => res.status(400).send(error));
-  },
-
   listTags (req, res) {
       Photo.findById( req.params.id , {
           include: {
@@ -71,13 +61,13 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
-  getLikes (req, res) {
+  allLikes (req, res) {
       Photo.findAll({})
       .then(photo => res.status(201).send(photo))
       .catch(error => res.status(400).send(error));
   },
 
-  allLikes (req, res) {
+  getLikes (req, res) {
        Photo.findById( req.params.id )
        .then(photo => res.status(201).send(photo))
        .catch(error => res.status(400).send(error));

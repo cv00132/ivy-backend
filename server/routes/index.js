@@ -29,14 +29,14 @@ module.exports = (app) => {
   app.post('/photos', middleware.authenticate, PhotoController.create);
   app.get('/photos', PhotoController.list);
   app.get('/photos/:id', PhotoController.listOne);
-  app.get('/comments/photos/:id', PhotoController.listComments);
   app.put('/likes/:id', PhotoController.likes);
-  app.get('/photos/likes/all', PhotoController.getLikes);
-  app.get('/likes/:id', PhotoController.allLikes);
+  app.get('/photos/likes/all', PhotoController.allLikes);
+  app.get('/likes/:id', PhotoController.getLikes);
 
 
   app.post('/comments/:id', middleware.authenticate, CommentsController.create);
   app.get('/comments/:id', CommentsController.listByPhoto);
+  app.get('/comments/by/:id', CommentsController.linkUser)
 
   app.get('/photos/:id/tags', TagsController.list);
   app.get('/tags/photos', TagsController.listAll);

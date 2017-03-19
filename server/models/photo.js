@@ -7,11 +7,10 @@ module.exports = function(sequelize, DataTypes) {
     likes: DataTypes.INTEGER
   }, {
     classMethods: {
-    //   associate: function(models) {
-    //     Photo.belongsTo(models.User);
-    //     Photo.Many(models.Comments, {
+       associate: function(models) {
+         Photo.belongsTo(models.User);
+    //     Photo.hasMany(models.Comments, {
     //         through: {
-    //             model: 'PhotoTags',
     //             foreignKey: 'photoId'
     //         }
     //     });
@@ -21,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
     //             foreignKey: 'photoId'
     //         }
     //     });
-    //   }
+       }
      }
   });
   return Photo;

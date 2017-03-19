@@ -22,5 +22,15 @@ module.exports = {
     })
       .then(comment => res.status(201).send(comment))
       .catch(error => res.status(400).send(error));
+  },
+
+  linkUser (req, res) {
+    Comments.findAll({
+      where: {
+        userId: req.params.id
+      }
+    })
+      .then(username => res.status(201).send(username))
+      .catch(error => res.status(400).send(error));
   }
 };
